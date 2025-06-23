@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(128, 20, 20);
+}
+h1{
+    color:white;
+    text-align: center;
+}
+p{
+    font-family:'segoe UI';
+    font-size: x-large;
+    color: white;
+    font-weight: bold;
+}
+.class1{color: chocolate;}
+.class2{color: aqua;}
+#myID{
+    border: solid;
+    border-width: 5px;
+    border-color: orange;
+    color: black;
+}

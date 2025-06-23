@@ -1,0 +1,39 @@
+div{
+    background-color: rgb(124, 163, 182);
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+    position: relative;
+    animation-name: new_animation;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+
+ }
+ @keyframes new_animation{
+    0%{
+        background-color: red;
+        left: 200px;
+        top:0px;
+    }
+    25%{
+        background-color: yellow;
+        left: 200px;
+        top:0px;
+    }
+    50%{
+        background-color: pink;
+        left:200px;
+        top:100px;
+    }
+    75%{
+        background-color: rgb(17, 20, 94);
+        left:200px;
+        top:150px;
+    }
+    100%{
+        background-color: rgb(102, 181, 28);
+        left:200px;
+        top:200px;
+    }
+ } 
