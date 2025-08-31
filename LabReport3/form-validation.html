@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Validated Form</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    form { max-width: 400px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+    input, select { width: 100%; padding: 8px; margin-bottom: 15px; }
+    label { font-weight: bold; }
+    .error { color: red; font-size: 0.9em; }
+    .success { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <div class="error" id="nameError"></div>
+
+  <label for="id">ID:</label>
+  <input type="text" id="id" name="id">
+  <div class="error" id="idError"></div>
+
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email">
+  <div class="error" id="emailError"></div>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+  <div class="error" id="passwordError"></div>
+
+  <label for="confirmPassword">Confirm Password:</label>
+  <input type="password" id="confirmPassword" name="confirmPassword">
+  <div class="error" id="confirmPasswordError"></div>
+
+  <label for="department">Department:</label>
+  <select id="department" name="department">
+    <option value="">--Select Department--</option>
+    <option value="CSE">CSE</option>
+    <option value="EEE">EEE</option>
+    <option value="BBA">BBA</option>
+    <option value="LAW">LAW</option>
+  </select>
+  <div class="error" id="departmentError"></div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<div id="result" class="success"></div>
+
+<script>
+  $(document).ready(function () {
+    $("#myForm").submit(function (e) {
+      e.preventDefault(); // prevent form from submitting
+
+      // Clear all errors
+      $(".error").text("");
+      $("#result").text("");
+
+      let isValid = true;
+      let name = $("#name").val().trim();
+      let id = $("#id").val().trim();
+      let email = $("#email").val().trim();
+      let password = $("#password").val();
+      let confirmPassword = $("#confirmPassword").val();
+      let department = $("#department").val();
+
+      // Name validation
+      if (name === "") {
+        $("#nameError").text("Name is required.");
+        isValid = false;
+      }
+
+      // ID validation
+      if (id === "") {
+        $("#idError").text("ID is required.");
+        isValid = false;
+      }
+
+      // Email validation
+      let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email === "") {
+        $("#emailError").text("Email is required.");
+        isValid = false;
+      } else if (!emailRegex.test(email)) {
+        $("#emailError").text("Invalid email format.");
+        isValid = false;
+      }
+
+      // Password validation
+      if (password === "") {
+        $("#passwordError").text("Password is required.");
+        isValid = false;
+      }
+
+      // Confirm Password
+      if (confirmPassword === "") {
+        $("#confirmPasswordError").text("Please confirm your password.");
+        isValid = false;
+      } else if (password !== confirmPassword) {
+        $("#confirmPasswordError").text("Passwords do not match.");
+        isValid = false;
+      }
+
+      // Department validation
+      if (department === "") {
+        $("#departmentError").text("Please select a department.");
+        isValid = false;
+      }
+
+      if (isValid) {
+        $("#result").text("Form submitted successfully!");
+        // You can now send form data to a server here
+        // For now, reset the form:
+        $("#myForm")[0].reset();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

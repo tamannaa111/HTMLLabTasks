@@ -1,0 +1,10 @@
+/* styles.css */
+#main-box {
+  background-color: lightgreen;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+  font-size: 18px;
+  border: 2px solid green;
+  border-radius: 10px;
+}
